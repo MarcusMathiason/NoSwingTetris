@@ -83,6 +83,7 @@ public class Tetromino {
 	}
 	
 	public void tick() {
+		
 		if(yInc) {
 			this.y += yVel;
 			if((this.y+SIZE+1)>Game.SCREEN_HEIGHT) {
