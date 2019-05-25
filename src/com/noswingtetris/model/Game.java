@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable {
 
 	public Game() {
 		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		new Window(SCREEN_WIDTH, SCREEN_HEIGHT, this);
+		new Window(this);
 		start();
 	}
 
@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable {
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			//Set to false for stable 60FPS
-			boolean shouldRender = true;
+			boolean shouldRender = false;
 			while (delta >= 1) {
 				//tick();
 				delta--;
@@ -79,7 +79,6 @@ public class Game extends Canvas implements Runnable {
 			System.out.println("Stopping thread...");
 			thread.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		isRunning = false;

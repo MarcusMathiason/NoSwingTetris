@@ -10,7 +10,7 @@ public class Window extends Frame{
 	
 	private static final long serialVersionUID = 1L;
 
-	public Window(int width, int height, Game game) {
+	public Window(Game game) {
 		super();
 		this.setVisible(true);
 		this.setResizable(false);
