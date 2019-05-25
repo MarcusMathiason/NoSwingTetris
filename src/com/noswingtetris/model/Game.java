@@ -1,13 +1,11 @@
 package com.noswingtetris.model;
 
-import java.awt.Canvas;
 import java.awt.Toolkit;
 
+import com.noswingtetris.controller.Handler;
 import com.noswingtetris.view.Window;
 
 public class Game implements Runnable {
-	private static final long serialVersionUID = 1L;
-	
 	public static final int SCREEN_WIDTH = 400;
 	public static final int SCREEN_HEIGHT = 800;
 
@@ -15,10 +13,21 @@ public class Game implements Runnable {
 	
 	private Window window;
 	
+	private Handler handler;
+	
 	private boolean isRunning = false;
 
 	public Game() {
-		window = new Window(SCREEN_WIDTH, SCREEN_HEIGHT, this);
+		
+		
+		handler = new Handler();
+		
+		
+		
+		handler.addObject(new Tetromino());
+		
+		window = new Window(SCREEN_WIDTH, SCREEN_HEIGHT, this, handler);
+		
 		start();
 	}
 
@@ -36,7 +45,7 @@ public class Game implements Runnable {
 			//Set to false for stable 60FPS
 			boolean shouldRender = false;
 			while (delta >= 1) {
-				//tick();
+				tick();
 				delta--;
 				shouldRender = true;
 			}
@@ -62,6 +71,10 @@ public class Game implements Runnable {
 		stop();
 	
 		
+	}
+	
+	public void tick() {
+		handler.tick();
 	}
 	
 	public void start() {
