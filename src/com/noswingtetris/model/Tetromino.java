@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Tetromino {
 	private final int SIZE = 40;
-	private int x, y;
+	private int x = (Game.SCREEN_WIDTH/2)-(SIZE/2), y;
 	private int yVel = 40;
 	private boolean yInc = true;
 	
