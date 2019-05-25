@@ -82,7 +82,61 @@ public class Tetromino {
 	public void render(Graphics g) {
 		//System.out.println("Tetromino render...");
 		g.setColor(color);
+		
+		//Center square
 		g.fillRect(x, y, SIZE, SIZE);
+		
+		switch(shape) {
+		case "I":
+			g.fillRect(x-(SIZE*2), y, SIZE, SIZE);
+			g.fillRect(x-(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE*2), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			break;
+		case "O":
+			g.fillRect(x, y+(SIZE), SIZE, SIZE);
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE), y+(SIZE), SIZE, SIZE);
+			break;
+		
+		case "T":
+			g.fillRect(x-(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x, y+(SIZE), SIZE, SIZE);
+			break;
+		
+		case "J":
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE*2), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE*2), y+SIZE, SIZE, SIZE);
+			break;
+		
+		case "L":
+			g.fillRect(x, y+(SIZE), SIZE, SIZE);
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE*2), y, SIZE, SIZE);
+			break;
+		
+		case "S":
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x, y+(SIZE), SIZE, SIZE);
+			g.fillRect(x-(SIZE), y+(SIZE), SIZE, SIZE);
+			break;
+		
+		case "Z":
+			g.fillRect(x+(SIZE), y, SIZE, SIZE);
+			g.fillRect(x+(SIZE), y+(SIZE), SIZE, SIZE);
+			g.fillRect(x+(SIZE*2), y+(SIZE), SIZE, SIZE);
+			break;
+		
+		}
+		
+		
+	}
+	
+	public void stop() {
+		xVel = 0;
+		yVel = 0;
 	}
 	
 	public void tick() {
@@ -93,10 +147,7 @@ public class Tetromino {
 				yInc = false;
 			}
 		} else {
-			this.y -= yVel;
-			if((this.y-1)<0) {
-				yInc = true;
-			}
+			stop();
 		}
 		
 		if(xInc) {
