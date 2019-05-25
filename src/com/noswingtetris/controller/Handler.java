@@ -13,7 +13,7 @@ public class Handler {
 
 	public void tick() {
 
-		if ((tickCounter % 50) == 0) {
+		if ((tickCounter % 10) == 0) {
 			// System.out.println("Handler tick...");
 			for (Tetromino obj : objects) {
 				obj.tick();

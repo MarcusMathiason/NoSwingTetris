@@ -31,6 +31,24 @@ public class Renderer extends Canvas {
 
 		g.fillRect(0, 0, width, height);
 
+		g.setColor(Color.red);
+
+//		// Left section center
+//		g.fillRect(width / 4, 0, 1, height);
+//
+//		// Absolute center
+//		g.fillRect(width / 2, 0, 1, height);
+//
+//		// Right section center
+//		g.fillRect((width / 2) + (width / 4), 0, 1, height);
+		
+		for(int i = 1; i <= 10; i++) {
+			g.fillRect(40*i, 0, 1, height);
+		}
+
+		for (int i = 1; i <= 20; i++) {
+			g.fillRect(0, 40*i, width, 1);
+		}
 		handler.render(g);
 
 		g.dispose();

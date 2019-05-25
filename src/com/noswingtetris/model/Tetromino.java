@@ -7,9 +7,12 @@ import java.util.Random;
 
 public class Tetromino {
 	private final int SIZE = 40;
-	private int x = (Game.SCREEN_WIDTH/2)-(SIZE/2), y;
+	private int x = (Game.SCREEN_WIDTH/2), y;
 	private int yVel = 40;
+	private int xVel = 40;
+	
 	private boolean yInc = true;
+	private boolean xInc = true;
 	
 	private String[] shapes = {
 			"I",
@@ -93,6 +96,18 @@ public class Tetromino {
 			this.y -= yVel;
 			if((this.y-1)<0) {
 				yInc = true;
+			}
+		}
+		
+		if(xInc) {
+			this.x += xVel;
+			if((this.x+SIZE+1)>Game.SCREEN_WIDTH) {
+				xInc = false;
+			}
+		} else {
+			this.x -= xVel;
+			if((this.x-1)<0) {
+				xInc = true;
 			}
 		}
 	}
