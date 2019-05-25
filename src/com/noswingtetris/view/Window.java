@@ -1,5 +1,6 @@
 package com.noswingtetris.view;
 
+import java.awt.Canvas;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -9,8 +10,10 @@ import com.noswingtetris.model.Game;
 public class Window extends Frame{
 	
 	private static final long serialVersionUID = 1L;
+	
+	private Renderer renderer;
 
-	public Window(Game game) {
+	public Window(int width, int height, Game game) {
 		super();
 		this.setVisible(true);
 		this.setResizable(false);
@@ -20,7 +23,12 @@ public class Window extends Frame{
 				System.exit(0);
 			}
 		});
-		this.add(game);
+		renderer = new Renderer(width, height);
+		this.add(renderer);
 		this.pack();
+	}
+	
+	public void render() {
+		renderer.render();
 	}
 }

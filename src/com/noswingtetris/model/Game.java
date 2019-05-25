@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 
 import com.noswingtetris.view.Window;
 
-public class Game extends Canvas implements Runnable {
+public class Game implements Runnable {
 	private static final long serialVersionUID = 1L;
 	
 	public static final int SCREEN_WIDTH = 400;
@@ -13,11 +13,12 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	
+	private Window window;
+	
 	private boolean isRunning = false;
 
 	public Game() {
-		this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		new Window(this);
+		window = new Window(SCREEN_WIDTH, SCREEN_HEIGHT, this);
 		start();
 	}
 
@@ -47,7 +48,7 @@ public class Game extends Canvas implements Runnable {
 			}
 			
 			if (shouldRender) {
-				//render();
+				window.render();
 				Toolkit.getDefaultToolkit().sync();
 				frames++;
 			}
