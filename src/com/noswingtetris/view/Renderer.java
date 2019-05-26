@@ -5,17 +5,21 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import com.noswingtetris.controller.InputHandler;
 import com.noswingtetris.controller.ObjectHandler;
 
 public class Renderer extends Canvas {
 	private static final long serialVersionUID = 1L;
 
 	private int width, height;
+	
+	public InputHandler input;
 
 	public Renderer(int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.setSize(width, height);
+		input = new InputHandler(this);
 	}
 
 	public void render(ObjectHandler handler) {
