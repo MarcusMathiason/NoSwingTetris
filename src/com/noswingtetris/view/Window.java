@@ -4,18 +4,18 @@ import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import com.noswingtetris.controller.Handler;
+import com.noswingtetris.controller.ObjectHandler;
 import com.noswingtetris.model.Game;
 
-public class Window extends Frame{
-	
-	private static final long serialVersionUID = 1L;
-	
-	private Renderer renderer;
-	
-	private Handler handler;
+public class Window extends Frame {
 
-	public Window(int width, int height, Game game, Handler handler) {
+	private static final long serialVersionUID = 1L;
+
+	private Renderer renderer;
+
+	private ObjectHandler handler;
+
+	public Window(int width, int height, Game game, ObjectHandler handler) {
 		super();
 		this.setVisible(true);
 		this.setResizable(false);
@@ -30,7 +30,7 @@ public class Window extends Frame{
 		this.add(renderer);
 		this.pack();
 	}
-	
+
 	public void render() {
 		renderer.render(handler);
 	}

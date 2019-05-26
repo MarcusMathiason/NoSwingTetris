@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import com.noswingtetris.model.Tetromino;
 
-public class Handler {
+public class ObjectHandler {
 
 	LinkedList<Tetromino> objects = new LinkedList<Tetromino>();
 

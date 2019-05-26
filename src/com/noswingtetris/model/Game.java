@@ -2,7 +2,7 @@ package com.noswingtetris.model;
 
 import java.awt.Toolkit;
 
-import com.noswingtetris.controller.Handler;
+import com.noswingtetris.controller.ObjectHandler;
 import com.noswingtetris.view.Window;
 
 public class Game implements Runnable {
@@ -10,24 +10,21 @@ public class Game implements Runnable {
 	public static final int SCREEN_HEIGHT = 800;
 
 	private Thread thread;
-	
+
 	private Window window;
-	
-	private Handler handler;
-	
+
+	private ObjectHandler handler;
+
 	private boolean isRunning = false;
 
 	public Game() {
-		
-		
-		handler = new Handler();
-		
-		
-		
+
+		handler = new ObjectHandler();
+
 		handler.addObject(new Tetromino());
-		
+
 		window = new Window(SCREEN_WIDTH, SCREEN_HEIGHT, this, handler);
-		
+
 		start();
 	}
 
@@ -42,20 +39,20 @@ public class Game implements Runnable {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
-			//Set to false for stable 60FPS
+			// Set to false for stable 60FPS
 			boolean shouldRender = false;
 			while (delta >= 1) {
 				tick();
 				delta--;
 				shouldRender = true;
 			}
-			
+
 			try {
 				Thread.sleep(2);
-			} catch(InterruptedException e){
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
+
 			if (shouldRender) {
 				window.render();
 				Toolkit.getDefaultToolkit().sync();
@@ -69,25 +66,25 @@ public class Game implements Runnable {
 			}
 		}
 		stop();
-	
-		
+
 	}
-	
+
 	public void tick() {
+
 		handler.tick();
 	}
-	
+
 	public void start() {
-		if(isRunning)
+		if (isRunning)
 			return;
 		thread = new Thread(this);
 		System.out.println("Starting new thread...");
 		thread.start();
 		isRunning = true;
 	}
-	
+
 	public void stop() {
-		if(!isRunning)
+		if (!isRunning)
 			return;
 		try {
 			System.out.println("Stopping thread...");

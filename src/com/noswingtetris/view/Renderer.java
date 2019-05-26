@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
-import com.noswingtetris.controller.Handler;
+import com.noswingtetris.controller.ObjectHandler;
 
 public class Renderer extends Canvas {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +18,7 @@ public class Renderer extends Canvas {
 		this.setSize(width, height);
 	}
 
-	public void render(Handler handler) {
+	public void render(ObjectHandler handler) {
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
 			this.createBufferStrategy(3);
@@ -41,13 +41,13 @@ public class Renderer extends Canvas {
 //
 //		// Right section center
 //		g.fillRect((width / 2) + (width / 4), 0, 1, height);
-		
-		for(int i = 1; i <= 10; i++) {
-			g.fillRect(40*i, 0, 1, height);
+
+		for (int i = 1; i <= 10; i++) {
+			g.fillRect(40 * i, 0, 1, height);
 		}
 
 		for (int i = 1; i <= 20; i++) {
-			g.fillRect(0, 40*i, width, 1);
+			g.fillRect(0, 40 * i, width, 1);
 		}
 		handler.render(g);
 
