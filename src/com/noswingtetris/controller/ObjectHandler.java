@@ -8,6 +8,7 @@ import com.noswingtetris.model.Tetromino;
 public class ObjectHandler {
 
 	LinkedList<Tetromino> objects = new LinkedList<Tetromino>();
+	int[] x = new int[2];
 
 	private int tickCounter = 0;
 
